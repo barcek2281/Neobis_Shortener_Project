@@ -99,7 +99,11 @@ section {
         csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
       },
       success: function(data){
-        $('h2').html("http://127.0.0.1:8000/"+data)
+          if (data.valid){
+              $('h2').html("http://127.0.0.1:8000/" + data.link)
+          }else {
+              $('h2').html("doesn't work").css('color', 'red')
+          }
       }
     });
   });
